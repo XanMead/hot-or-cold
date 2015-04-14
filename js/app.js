@@ -11,17 +11,29 @@ var numGuesses;
 $(document).ready(function(){
 	
 	/*--- Display information modal box ---*/
-  	$(".what").click(function(){
-    	$(".overlay").fadeIn(1000);
+  	$('.what').click(function() {
+    	$('.overlay').fadeIn(1000);
   	});
 
   	/*--- Hide information modal box ---*/
-  	$("a.close").click(function(){
-  		$(".overlay").fadeOut(1000);
+  	$('a.close').click(function() {
+  		$('.overlay').fadeOut(1000);
   	});
 
+  	$('.new').click(function() {
+  		newGame();
+  	});
 
+  	$('#guessButton').click(function() {
+  		makeGuess();
+  	});
 
+  	$('#userGuess').keypress(function() {
+  		if (event.keyCode == 13) {
+  			event.preventDefault();
+  			$('#guessButton').click();
+  		}
+  	});
 });
 
 function newGame() {
@@ -49,6 +61,10 @@ function generateSecretNumber() {
 	secretNumber = rng(HC_MIN, HC_MAX);
 }
 
+
+function makeGuess() {
+
+}
 
 /* Borrowed from this JSFiddle: http://jsfiddle.net/alanwsmith/GfAhy/ */
 function rng(min, max) {
